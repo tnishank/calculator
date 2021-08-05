@@ -52,21 +52,60 @@ namespace calcluator
             resultLabel.Content = "0";
         }
 
-        private void nineButton_Click(object sender, RoutedEventArgs e)
+        private void NumberButton_Click(object sender, RoutedEventArgs e)
         {
-            if(resultLabel.Content.ToString() == "0")
+            int number_sent = 0;
+
+            if(sender == nineButton)
             {
-                resultLabel.Content = "9";
+                number_sent = 9;
+            }
+            else if (sender == eightButton)
+            {
+                number_sent = 8;
+            }
+            else if(sender == sevenButton)
+            {
+                number_sent = 7;
+            }
+            else if(sender == sixButton)
+            {
+                number_sent = 6;
+            }
+            else if(sender == fiveButton)
+            {
+                number_sent = 5;
+            }
+            else if(sender == fourButton)
+            {
+                number_sent = 4;
+            }
+            else if(sender == threeButton)
+            {
+                number_sent = 3;
+            }
+            else if(sender == twoButton)
+            {
+                number_sent = 2;
+            }
+            else if(sender == oneButton)
+            {
+                number_sent = 1;
+            }
+            else if(sender == zeroButton)
+            {
+                number_sent = 0;
+            }
+
+            if (resultLabel.Content.ToString() == "0")
+            {
+                resultLabel.Content = number_sent.ToString();
             }
             else
             {
-                resultLabel.Content = $"{resultLabel.Content}9";
+                resultLabel.Content = $"{resultLabel.Content}{number_sent}";
             }
         }
 
-        private void ACButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
