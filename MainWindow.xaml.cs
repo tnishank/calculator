@@ -147,6 +147,11 @@ namespace calcluator
         }
         public static double Division(double n1, double n2)
         {
+            if (n2 == 0)
+            {
+                MessageBox.Show("Number can't be divided by 0", "Wrong Operation", MessageBoxButton.OK, MessageBoxImage.Error);
+                return 0;
+            }
             return n1 / n2;
         }
     }
