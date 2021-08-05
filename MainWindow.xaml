@@ -38,6 +38,7 @@
                 Grid.Column="2"
                 Grid.Row="1"/>
         <Button x:Name="divideButton" Content="/"
+                Click="OperationButton_Click"
                 Margin="5"
                 Grid.Column="3"
                 Grid.Row="1"/>
@@ -57,6 +58,7 @@
                 Grid.Row="2"/>
         <Button x:Name="multiplyButton" Content="*"
                 Margin="5"
+                Click="OperationButton_Click"
                 Grid.Column="3"
                 Grid.Row="2"/>
         <Button x:Name="fourButton" Content="4"
@@ -76,6 +78,7 @@
                 Grid.Row="3"/>
         <Button x:Name="minusButton" Content="-"
                 Margin="5"
+                Click="OperationButton_Click"
                 Grid.Column="3"
                 Grid.Row="3"/>
         <Button x:Name="oneButton" Content="1"
@@ -95,6 +98,7 @@
                 Grid.Row="4"/>
         <Button x:Name="plusButton" Content="+"
                 Margin="5"
+                Click="OperationButton_Click"
                 Grid.Column="3"
                 Grid.Row="4"/>
         <Button x:Name="zeroButton" Content="0"
@@ -104,10 +108,12 @@
                 Grid.Row="5"/>
         <Button x:Name="decimalButton" Content="."
                 Margin="5"
+                Click="decimalButton_Click"
                 Grid.Column="2"
                 Grid.Row="6"/>
         <Button x:Name="equalButton" Content="="
                 Margin="5"
+                Click="equalButton_Click"
                 Grid.Column="4"
                 Grid.Row="6"/>
     </Grid>

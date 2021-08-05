@@ -20,7 +20,9 @@ namespace calcluator
     /// </summary>
     public partial class MainWindow : Window
     {
-        double lastNumber;
+        double lastNumber, result;
+        SelectedOperator selectedOperator;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,6 +31,30 @@ namespace calcluator
             percentageButton.Click += PercentageButton_Click;
         }
 
+        private void OperationButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
+            {
+                resultLabel.Content = "0";
+            }
+
+            if(sender == plusButton)
+            {
+                selectedOperator = SelectedOperator.Addition;
+            }
+            else if (sender == minusButton)
+            {
+                selectedOperator = SelectedOperator.Subtraction;
+            }
+            else if(sender == multiplyButton)
+            {
+                selectedOperator = SelectedOperator.Multipplication;
+            }
+            else if(sender == divideButton)
+            {
+                selectedOperator = SelectedOperator.Division;
+            }
+        }
         private void PercentageButton_Click(object sender, RoutedEventArgs e)
         {
             if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
@@ -52,6 +78,43 @@ namespace calcluator
             resultLabel.Content = "0";
         }
 
+        private void equalButton_Click(object sender, RoutedEventArgs e)
+        {
+            double firstNumber;
+            if (double.TryParse(resultLabel.Content.ToString(), out firstNumber))
+            {
+                switch (selectedOperator)
+                {
+                    case SelectedOperator.Addition:
+                        result = SimpleMath.Addition(lastNumber, firstNumber);
+                        break;
+
+                    case SelectedOperator.Multipplication:
+                        result = SimpleMath.Multiplication(lastNumber, firstNumber);
+                        break;
+                    case SelectedOperator.Subtraction:
+                        result = SimpleMath.Subtraction(lastNumber, firstNumber);
+                        break;
+                    case SelectedOperator.Division:
+                        result = SimpleMath.Division(lastNumber, firstNumber);
+                        break;
+                }
+                resultLabel.Content = result.ToString();
+            }
+        }
+
+        private void decimalButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (resultLabel.Content.ToString().Contains("."))
+            {
+                //Do Nothing
+            }
+            else
+            {
+                resultLabel.Content = $"{resultLabel.Content}.";
+            }
+        }
+
         private void NumberButton_Click(object sender, RoutedEventArgs e)
         {
             int number_sent = int.Parse((sender as Button).Content.ToString());
@@ -66,5 +129,33 @@ namespace calcluator
             }
         }
 
+    }
+
+    public class SimpleMath
+    {
+        public static double Addition(double n1, double n2)
+        {
+            return n1 + n2;
+        }
+        public static double Subtraction(double n1, double n2)
+        {
+            return n1 - n2;
+        }
+        public static double Multiplication(double n1, double n2)
+        {
+            return n1 * n2;
+        }
+        public static double Division(double n1, double n2)
+        {
+            return n1 / n2;
+        }
+    }
+    
+    public enum SelectedOperator
+    {
+        Addition,
+        Subtraction,
+        Multipplication,
+        Division
     }
 }
