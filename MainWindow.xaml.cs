@@ -54,48 +54,7 @@ namespace calcluator
 
         private void NumberButton_Click(object sender, RoutedEventArgs e)
         {
-            int number_sent = 0;
-
-            if(sender == nineButton)
-            {
-                number_sent = 9;
-            }
-            else if (sender == eightButton)
-            {
-                number_sent = 8;
-            }
-            else if(sender == sevenButton)
-            {
-                number_sent = 7;
-            }
-            else if(sender == sixButton)
-            {
-                number_sent = 6;
-            }
-            else if(sender == fiveButton)
-            {
-                number_sent = 5;
-            }
-            else if(sender == fourButton)
-            {
-                number_sent = 4;
-            }
-            else if(sender == threeButton)
-            {
-                number_sent = 3;
-            }
-            else if(sender == twoButton)
-            {
-                number_sent = 2;
-            }
-            else if(sender == oneButton)
-            {
-                number_sent = 1;
-            }
-            else if(sender == zeroButton)
-            {
-                number_sent = 0;
-            }
+            int number_sent = int.Parse((sender as Button).Content.ToString());
 
             if (resultLabel.Content.ToString() == "0")
             {
